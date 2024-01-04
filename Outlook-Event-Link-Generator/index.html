@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Outlook カレンダーイベントリンク生成器</title>
+    <!-- Bootstrap CSSの読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="script.js"></script>
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        #copyMessage {
+            display: none;
+            margin-left: 10px;
+            color: green;
+        }
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Outlook カレンダー<br>イベントリンク生成器</h1>
+        <form id="eventForm">
+            <div class="form-group">
+                <label for="startdt">開始日時:</label>
+                <input type="datetime-local" id="startdt" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="enddt">終了日時:</label>
+                <input type="datetime-local" id="enddt" class="form-control" required>
+                <div>
+                    <button type="button" class="btn btn-outline-secondary shortcut-btn" onclick="setEndTime(30)">30分後</button>
+                    <button type="button" class="btn btn-outline-secondary shortcut-btn" onclick="setEndTime(60)">1時間後</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="title">タイトル:</label>
+                <input type="text" id="title" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="body">説明:</label>
+                <textarea id="body" class="form-control"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="generateLink()">リンク生成</button>
+            <button type="button" class="btn btn-secondary" onclick="copyToClipboard()">クリップボードにコピー</button>
+            <span id="copyMessage">コピーしました！</span>
+        </form>
+        <p id="result"></p>
+
+        <div class="disclaimer">
+            <p><strong>注意事項:</strong> このツールは使用ユーザーが自己責任のもとで行っていただくようお願いいたします。いかなる不利益やトラブルに関しても、開発者は一切の責任を負いかねます。<br>作成したリンクはスマートフォンでは使用できません。<br>outlook.office365.comにログインしている状態でリンク先にアクセスしてください。</p>
+        </div>
+    </div>
+
+    <!-- BootstrapのJavaScriptと依存関係の読み込み -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
