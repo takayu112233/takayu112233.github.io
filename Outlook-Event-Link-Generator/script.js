@@ -6,9 +6,9 @@ function generateLink() {
 
     var link = `https://outlook.office365.com/calendar/action/compose?startdt=${startdt}&enddt=${enddt}&subject=${title}&body=${body}`;
 
-    var meeting_url = document.getElementById('meeting_url').value;
-    if (meeting_url) {
-        link += encodeURIComponent(`<br><a href="${meeting_url}">ミーティングURLはこちら</a>`);
+    var url = document.getElementById('url').value;
+    if (url) {
+        link += encodeURIComponent(`<br><a href="${url}">詳細はこちら</a>`);
     }
 
     document.getElementById('generatedLink').value = link;
