@@ -51,14 +51,35 @@
                 <textarea id="body" class="form-control"></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="meeting_url">会議URL（任意）:</label>
+                <input type="text" id="meeting_url" class="form-control">
+            </div>
+
             <button type="button" class="btn btn-primary" onclick="generateLink()">リンク生成</button>
             <button type="button" class="btn btn-secondary" onclick="copyToClipboard()">クリップボードにコピー</button>
             <span id="copyMessage">コピーしました！</span>
+
+            <div class="form-group">
+                <label for="generatedLink">生成されたリンク:</label>
+                <textarea id="generatedLink" class="form-control" rows="3" readonly></textarea>
+            </div>
+            
         </form>
-        <p id="result"></p>
+        <div class="disclaimer">
+            <p><strong>本ツールについて:</strong> 
+                このツールは、Outlook Online向けの予定追加用URLを作成します。
+                <br>outlook.office365.comにログインしている状態でリンク先にアクセスしてください。
+                <br>フォームの内容はブラウザ上で処理を行い、サーバーには送信されません。
+            </p>
+        </div>
 
         <div class="disclaimer">
-            <p><strong>注意事項:</strong> このツールは使用ユーザーが自己責任のもとで行っていただくようお願いいたします。いかなる不利益やトラブルに関しても、開発者は一切の責任を負いかねます。<br>作成したリンクはスマートフォンでは使用できません。<br>outlook.office365.comにログインしている状態でリンク先にアクセスしてください。</p>
+            <p><strong>注意事項:</strong> このツールは使用ユーザーが自己責任のもとで行っていただくようお願いいたします。いかなる不利益やトラブルに関しても、開発者は一切の責任を負いかねます。</p>
+        </div>
+
+        <div class="footer">
+            <p class="text-center small">&copy; のすけ工房2024</p>
         </div>
     </div>
 

@@ -6,12 +6,17 @@ function generateLink() {
 
     var link = `https://outlook.office365.com/calendar/action/compose?startdt=${startdt}&enddt=${enddt}&subject=${title}&body=${body}`;
 
-    document.getElementById('result').textContent = link;
+    var meeting_url = document.getElementById('meeting_url').value;
+    if (meeting_url) {
+        link += encodeURIComponent(`<br><a href="${meeting_url}">ミーティングURLはこちら</a>`);
+    }
+
+    document.getElementById('generatedLink').value = link;
     document.getElementById('copyMessage').style.display = 'none';
 }
 
 function copyToClipboard() {
-    var link = document.getElementById('result').textContent;
+    var link = document.getElementById('generatedLink').value;
     navigator.clipboard.writeText(link).then(function() {
         document.getElementById('copyMessage').style.display = 'inline';
     }, function(err) {
@@ -35,3 +40,19 @@ function setEndTime(minutes) {
         document.getElementById('enddt').value = endDateTime;
     }
 }
+
+function setCurrentDateTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = ('0' + (now.getMonth() + 1)).slice(-2);
+    var day = ('0' + now.getDate()).slice(-2);
+    var hours = ('0' + now.getHours()).slice(-2);
+    var minutes = ('0' + now.getMinutes()).slice(-2);
+
+    var currentDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+    document.getElementById('startdt').value = currentDateTime;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    setCurrentDateTime();
+});
